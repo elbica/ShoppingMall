@@ -1,0 +1,34 @@
+.btns button{
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background-color:gray;
+    border: none;
+    margin: 5px 10px;
+}
+
+.btns button:nth-child(1),.btns button:last-child{
+    width:50px;
+    height: 60px;
+    position:absolute; 
+    transition:0.3s all ease-in-out;
+    will-change: auto;
+    top:-17vw; z-index: 3;
+    background-color: transparent;
+    color:white;
+    opacity:0.8 ;
+    font-size: 4rem;
+    text-shadow: 2px -2px 2px rgba(50,50,93,0.4),-2px 2px 2px rgba(50,50,93,0.4)
+    ,-2px -2px 2px rgba(50,50,93,0.4),2px 2px 2px rgba(50,50,93,0.4);
+}
+.btns button:nth-child(1){
+    left:-39vw;
+}
+.btns button:last-child{
+    right:-39.5vw;
+}
+.btns button:nth-child(1):hover,.btns button:last-child:hover{
+    transform:scale(1.5);
+    transform-origin:center center;
+    opacity: 1.0;
+}

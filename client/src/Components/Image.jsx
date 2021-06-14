@@ -1,5 +1,23 @@
 import React, { useState } from "react"
 import "../css/Image.css"
+import styled from "styled-components"
+
+const CartButton = styled.button`
+  background-color: #df431c;
+  color: white;
+  font-size: 1rem;
+  padding: 0 30px;
+  border-radius: 2vw;
+  width: 12vw;
+  height: 4vw;
+  border: 1.2px solid white;
+  cursor: pointer;
+`
+
+const WrapImage = styled.div`
+  position: relative;
+  display: inline-block;
+`
 
 const Content = (props) => {
   return (
@@ -10,27 +28,47 @@ const Content = (props) => {
     </div>
   )
 }
-
+const AddCart = (props) => {
+  return (
+    <div className={props.cn} style={{ visibility: props.visi }}>
+      <CartButton>Add Cart</CartButton>
+    </div>
+  )
+}
 export default function Image(props) {
   let [visi, setVisi] = useState("hidden")
   const [act, setAct] = useState("")
 
   return (
-    <>
+    <WrapImage
+      onMouseEnter={(e) => {
+        setVisi("visible")
+        setAct(" act")
+        e.currentTarget.children[0].style["filter"] = "brightness(30%)"
+      }}
+      onMouseLeave={(e) => {
+        setAct("")
+        setVisi("hidden")
+        e.currentTarget.children[0].style["filter"] = "brightness(100%)"
+      }}
+    >
       <img
         src={props.src}
         alt="이미지"
-        style={{ height: props.width, width: "33vw" }}
-        onMouseEnter={() => {
-          setVisi("visible")
-          setAct(" act")
+        style={{
+          objectFit: "cover",
+          height: props.width + "vw",
+          width: props.width * 1.2 + "vw",
+          transition: "0.3s all ease-in-out",
+          userDrag: "none",
         }}
-        onMouseLeave={() => {
-          setAct("")
-          setVisi("hidden")
-        }}
+        draggable={false}
       />
-      <Content {...props} visi={visi} cn={"ContentWrap" + act} />
-    </>
+      {props.version ? (
+        <Content {...props} visi={visi} cn={"ContentWrap" + act} />
+      ) : (
+        <AddCart {...props} visi={visi} cn={"ButtonWrap" + act} />
+      )}
+    </WrapImage>
   )
 }

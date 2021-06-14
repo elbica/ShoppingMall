@@ -6,32 +6,32 @@ export default function Nav(props) {
   return (
     <div className="nav_total">
       <div className="logo">
-        <Link to="/">test</Link>
+        <Link to="/">ELBI</Link>
         <span className="line"></span>
       </div>
       <div className="menu">
         <div className="control">
           {!props.Version ? (
             <NavLink to="/login" activeClassName="active" className="link">
-              로그인
+              Login
             </NavLink>
           ) : (
             <NavLink to="/logout" activeClassName="active" className="link">
-              로그아웃
+              Logout
             </NavLink>
           )}
 
-          <NavLink to="/" activeClassName="active" className="link">
-            메인화면
+          <NavLink to="/product" activeClassName="active" className="link">
+            Product
           </NavLink>
           <NavLink to="/board/page1" activeClassName="active" className="link">
-            Bridge 광장
+            {"Q&A"}
           </NavLink>
           <NavLink to="/profile" activeClassName="active" className="link">
-            내 정보
+            My Page
           </NavLink>
-          <NavLink to="/center" activeClassName="active" className="link">
-            제안 센터
+          <NavLink to="/cart" activeClassName="active" className="link">
+            Cart
           </NavLink>
         </div>
       </div>
