@@ -16,7 +16,7 @@ const ScrollImg = (props) => {
       style={{
         width: "220vw",
         position: "relative",
-        left: -31 * props.num + "vw",
+        left: -26.5 * props.num + "vw",
         transition: "0.5s all",
       }}
     >

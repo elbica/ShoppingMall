@@ -5,7 +5,7 @@
     }
     15%{
         opacity: 0; 
-        transform : translateY(4.5vw);
+        transform : translateY(40%);
     }
 }
 @keyframes slid_out{
@@ -28,5 +28,13 @@
 }
 .ButtonWrap{
     transition:0.5s all;animation: slid_out 0.5s;
-    position: absolute; bottom:8vw; width:12vw; left:6vw;z-index:3;
+
+    position: absolute;
+    width:100%;
+    top:50%;
+    transform: translateY(-50%);
+    
+     z-index:3;
+     text-align: center;
+    
 }

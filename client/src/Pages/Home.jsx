@@ -103,7 +103,7 @@ export default function Home() {
             Consequuntur voluptatibus at aperiam laboriosam quo illum, esse harum nulla atque nobis
             sint quibusdam voluptatum natus porro quis perspiciatis?
           </p>
-          <Link>
+          <Link to="/product">
             <ShopButton>Shop Now</ShopButton>
           </Link>
         </Welcome>

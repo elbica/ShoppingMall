@@ -20,6 +20,6 @@ html,body,#root{height: 100%; box-sizing: border-box;}
 
 
 .nav{align-items: center;background: white; position: fixed; z-index: 6;
-   margin:20px 2vw 0 2vw;
+   margin:12px 2vw 0 2vw;
     padding: 5px 3vw 10px 3vw; width: 96vw;opacity: 0.9;border-radius: 40px;}
 

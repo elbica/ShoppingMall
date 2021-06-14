@@ -1,0 +1,35 @@
+.products .product_grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width:70vw;
+    margin: 0px auto 0 auto;
+    row-gap: 20px;
+}
+.products_admin{
+    margin: 130px auto 20px auto;
+    width: 70vw;
+    text-align: right;
+}
+.products_admin button{
+    background-color: #df431c;
+    color: white;
+    font-size: 1rem;
+    /* padding: 0 30px; */
+    border-radius: 0.5vw;
+    width: 10vw;
+    height: 2.5vw;
+    border: 1px solid white;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: 0.3s all;
+}
+
+.products_admin button:hover{
+    transform: scale(1.15);
+}
+.products .product_box{
+    background-color: white; margin:0.5px auto
+}
+.product_box .product_content{
+    padding:7px 12px;
+}

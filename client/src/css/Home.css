@@ -9,9 +9,9 @@
 
 .scroll_imgs .image{
     will-change: content;
-    animation: scaleani 1s ease-in-out
+    animation: scaleani .7s ease-in-out
 }
 .welcome{
-    animation: slid-up 1.5s ease-in-out
+    animation: slid-up 1.3s ease-in-out
 
 }

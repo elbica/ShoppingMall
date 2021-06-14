@@ -80,14 +80,14 @@ class Login extends React.Component {
                 <input type="submit" value=""></input>
               </div>
               <div className="etc">
-                <div className="finds">
+                {/* <div className="finds">
                   <img src={LoginQuestion} alt="" />
                   <div className="find">
                     <Link to="/find_id">아이디 찾기</Link>
                     <span></span>
                     <Link to="/find_password">비밀번호 찾기</Link>
                   </div>
-                </div>
+                </div> */}
                 <div className="register">
                   <Link to="/register">Bridge.inha가 처음이신가요?</Link>
                 </div>
