@@ -53,7 +53,32 @@ class BoardTable extends React.Component {
 
     let page = this.props.match.params.page
     page = parseInt(page.slice(4))
-    this.state = { pageNum: page, lists: [], lastPageNum: 1 }
+    this.state = {
+      pageNum: page,
+      lists: [
+        {
+          id: "1",
+          title: "2",
+          date: "3",
+          writer: "3",
+          view: "3",
+          board_like: "3",
+          comments: "3",
+          des: "3",
+        },
+        {
+          id: "2",
+          title: "2",
+          date: "2",
+          writer: "2",
+          view: "3",
+          board_like: "3",
+          comments: "4",
+          des: "5",
+        },
+      ],
+      lastPageNum: 1,
+    }
   }
   componentDidMount() {
     // this.getLists()

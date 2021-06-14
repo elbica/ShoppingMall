@@ -31,7 +31,7 @@ const ScrollImg = (props) => {
                 backgroundColor: "white",
                 display: "inline-block",
                 margin: "0 1.5vw",
-                border: "2px solid gray",
+                border: "1.25px solid lightgray",
                 padding: "5px",
                 boxShadow: "6px 9px 18px rgba(50,50,93,0.4)",
               }}
