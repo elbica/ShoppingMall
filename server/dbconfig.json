@@ -1,8 +1,0 @@
-{
-  "connectionLimit": 10,
-  "host": "internet-programming.c0eymnexykeq.ap-northeast-2.rds.amazonaws.com",
-  "user": "admin",
-  "port": "3306",
-  "password": "12345678",
-  "database": "ip2021"
-}
