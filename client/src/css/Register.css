@@ -1,7 +1,7 @@
 .all {
-    height: 76vh; 
+    height: 70vh; 
     width: 36vw; margin:20vh auto 4vh auto;
-    padding-top: 20px;
+    padding-top: 30px;
     background: white; border-radius: 30px;
     box-shadow: 2px 2px 16px rgb(0,0,0,0.3);
 }
@@ -18,7 +18,7 @@
     height: 2px;
     background: gray;
     display: inline-block;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 .titleBox .title h1 {
     font-size: 30px;

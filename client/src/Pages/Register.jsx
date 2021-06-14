@@ -14,7 +14,6 @@ class Register extends React.Component {
       _password: "",
       passwordCheck: "",
       nickName: "",
-      name: "",
       question: "",
       answer: "",
       possible: {
@@ -26,7 +25,6 @@ class Register extends React.Component {
     }
   }
   handleForm = (e) => {
-    console.log("??????")
     e.preventDefault()
     let temp = Object.values(this.state.possible)
     console.log(temp)
@@ -36,18 +34,17 @@ class Register extends React.Component {
         check = false
         break
       }
-    if (check && this.state.name && this.state.answer) {
+    if (check && this.state.answer) {
       Axios.post("/auth", {
         user_id: this.state._id,
         user_password: this.state._password,
-        user_realname: this.state.name,
         user_nickname: this.state.nickName,
         user_q: this.state.question,
         user_a: this.state.answer,
       })
         .then((res) => {
           alert("회원가입 성공!")
-          this.props.history.push("/login")
+          window.location.href = "/"
         })
         .catch((err) => {
           alert("회원가입 실패 ㅠㅠ")
@@ -100,21 +97,6 @@ class Register extends React.Component {
           <span className="line"></span>
         </section>
 
-        {/* <section className="description">
-          <h1 className="title" style={visi1}>
-            Welcome!
-          </h1>
-          <p style={visi1}>
-            자맛추는 Psychological test(심리테스트)의 결과를 기반으로 사용자에게 인하대학교 후문
-            근처의 음식점을 소개하는 서비스 입니다.
-          </p>
-          <p id="para" style={visi1}>
-            웹서비스 이용과 회원 등록을 위해 아래의 내용을 입력해주세요.
-          </p>
-          <p id="secondP" style={visi2}>
-            * 본인확인용 질문과 답변은 아이디와 비밀번호를 찾을 때 사용합니다.
-          </p>
-        </section> */}
         <form
           onSubmit={(e) => {
             this.handleForm(e)
@@ -154,16 +136,6 @@ class Register extends React.Component {
                   pw={this.state._password}
                 />
               </li>
-              <li>
-                <Input
-                  placeholder=""
-                  message=""
-                  type="text"
-                  up="닉네임"
-                  name="nickName"
-                  handle={this.handle}
-                />
-              </li>
             </ul>
 
             <ul style={visi2}>
@@ -172,8 +144,8 @@ class Register extends React.Component {
                   placeholder=""
                   message=""
                   type="text"
-                  up="이름"
-                  name="name"
+                  up="닉네임"
+                  name="nickName"
                   handle={this.handle}
                 />
               </li>

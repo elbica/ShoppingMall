@@ -32,54 +32,50 @@ router.post("/login", function(req, res) {
     }
   })
 })
-// // 회원가입 액션
-// router.post("/", function(req, res, err) {
-//   let user_id = req.body.user_id // id
-//   let user_password = req.body.user_password // pwd
-//   let user_realname = req.body.user_realname // user_realname
-//   let user_nickname = req.body.user_nickname // user_realname
-//   let user_q = req.body.user_q // verify question
-//   let user_a = req.body.user_a // verify answer
-//   let sql = `INSERT INTO user(user_id, user_password, user_realname, user_nickname, user_q, user_a)
-//               VALUES (?,?,?,?,?,?)`
+// 회원가입 액션
+router.post("/", function(req, res, err) {
+  let user_id = req.body.user_id // id
+  let user_password = req.body.user_password // pwd
+  let user_nickname = req.body.user_nickname // user_realname
+  let user_q = req.body.user_q // verify question
+  let user_a = req.body.user_a // verify answer
+  let sql = `INSERT INTO user(user_id, user_password, user_nickname, user_question, user_answer)
+              VALUES (?,?,?,?,?)`
 
-//   conn.query(
-//     sql,
-//     [user_id, user_password, user_realname, user_nickname, user_q, user_a],
-//     (err, rs) => {
-//       if (err) {
-//         // user_id, user_name을 unique로 설정해서 중복되면 에러 발생
-//         console.log(err)
-//         res.status(500).send(err)
-//       } else {
-//         req.session.user_id = user_id
-//         req.session.user_password = user_password
-//         req.session.user_name = user_nickname
-//         req.session.save(function() {})
-//         res.send()
-//       }
-//     }
-//   )
-// })
+  conn.query(sql, [user_id, user_password, user_nickname, user_q, user_a], (err, rs) => {
+    if (err) {
+      // user_id, user_name을 unique로 설정해서 중복되면 에러 발생
+      console.log(err)
+      res.status(500).send(err)
+    } else {
+      req.session.user_id = user_id
+      req.session.user_password = user_password
+      req.session.user_name = user_nickname
+      req.session.save(function() {
+        res.send()
+      })
+    }
+  })
+})
 
-// router.post("/check_id", (req, res) => {
-//   let id = req.body.id
-//   let sql = "select user_id from user where user_id=?"
-//   conn.query(sql, [id], (err, rs) => {
-//     if (rs[0]) {
-//       res.send({ id_check: true })
-//     } else res.send({ id_check: false })
-//   })
-// })
+router.post("/check_id", (req, res) => {
+  let id = req.body.id
+  let sql = "select user_id from user where user_id=?"
+  conn.query(sql, [id], (err, rs) => {
+    if (rs[0]) {
+      res.send({ id_check: true })
+    } else res.send({ id_check: false })
+  })
+})
 
-// router.post("/check_user_nickname", (req, res) => {
-//   let nickname = req.body.nickname
-//   let sql = "select user_nickname from user where user_nickname=?"
-//   conn.query(sql, [nickname], (err, rs) => {
-//     if (rs[0]) {
-//       res.send({ nickname_check: true })
-//     } else res.send({ nickname_check: false })
-//   })
-// })
+router.post("/check_user_nickname", (req, res) => {
+  let nickname = req.body.nickname
+  let sql = "select user_nickname from user where user_nickname=?"
+  conn.query(sql, [nickname], (err, rs) => {
+    if (rs[0]) {
+      res.send({ nickname_check: true })
+    } else res.send({ nickname_check: false })
+  })
+})
 
 module.exports = router
