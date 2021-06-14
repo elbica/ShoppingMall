@@ -78,7 +78,8 @@ app.post("/logout", function(req, res) {
 })
 app.post("/profile/update/:id", (req, res) => {
   let id = req.params.id
-  let nickname = req.body.nickName
+  let nickname = req.body.data
+
   let sql1 = "select user_nickname from user where user_nickname=?"
   conn.query(sql1, [nickname], (err, rs) => {
     if (!rs[0]) {
@@ -88,9 +89,12 @@ app.post("/profile/update/:id", (req, res) => {
           console.log(err)
           res.send({ update: false })
         } else {
+          req.session.user_name = nickname
           res.send({ update: true })
         }
       })
+    } else {
+      res.send({ update: false })
     }
   })
 })

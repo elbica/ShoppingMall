@@ -64,6 +64,15 @@
     font-size: 20px;
     padding-left: 15px;
 }
+.result .modify, .result .compl{
+    width:50px; height: 30px; background: rgb(0, 88, 251);
+    color: white; border-radius: 10px; border:none; 
+    box-shadow: 3px 3px 9px rgb(0,0,0,0.3);
+    margin-left: 10px; cursor: pointer; transition: 0.5s all;
+}
+.result .modify:hover, .result .compl:hover{
+    background: rgb(70, 134, 255);
+}
 /*메시지&버튼*/
 .profile_all .gotest a .message {
     margin-top: 20px;

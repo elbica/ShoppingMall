@@ -13,20 +13,22 @@ class Profile extends React.Component {
       updateFlag: false,
     }
   }
-  handleUpdate = (e) => {
-    this.setState({ updateFlag: !this.state.updateFlag })
+  handleUpdate = () => {
+    this.setState({ updateFlag: true })
   }
   update = async (e) => {
     e.preventDefault()
+    let nickname = e.target.previousSibling.value
     let id = this.props.array.id
-    await Axios.post(`/profile/update/${id}`, { data: e.target[0].value }).then((res) => {
+    await Axios.post(`/profile/update/${id}`, { data: nickname }).then((res) => {
       if (res.data.update) {
         alert("닉네임이 수정되었습니다")
-        this.setState({ nickName: this.state.nickName, updateFlag: false })
+        this.props.change({ id: id, loginCheck: true, nickName: nickname })
       } else {
         alert("수정 실패")
       }
     })
+    this.setState({ nickName: nickname, updateFlag: false })
   }
   async componentDidMount() {
     await Axios.post("/")
@@ -66,25 +68,22 @@ class Profile extends React.Component {
         </div>
         <div className="result">
           <p className="heads">닉네임</p>
-          <form
-            onSubmit={(e) => {
-              this.update(e)
-            }}
-          >
-            {!this.state.updateFlag ? (
-              <>
-                <input type="text" className="box" value={this.state.nickName} disabled />
-                <button type="text" onClick={(e) => this.handleUpdate(e)}>
-                  {"수정"}
-                </button>
-              </>
-            ) : (
-              <>
-                <input type="text" className="box" placeholder={this.state.nickName} />
-                <button type="submit">{"완료"}</button>
-              </>
-            )}
-          </form>
+
+          {!this.state.updateFlag ? (
+            <>
+              <input type="text" className="box" value={this.state.nickName} disabled />
+              <button type="text" className="modify" onClick={this.handleUpdate}>
+                {"수정"}
+              </button>
+            </>
+          ) : (
+            <>
+              <input type="text" className="box" />
+              <button className="compl" onClick={this.update}>
+                {"완료"}
+              </button>
+            </>
+          )}
         </div>
         <div className="gotest">
           <Link to="/product">
