@@ -110,7 +110,7 @@ export default function Home() {
       </div>
       <Griddiv>
         {gridImages.map((g, i) => {
-          return <Image {...g}></Image>
+          return <Image key={i} {...g}></Image>
         })}
         <Link to="/product">
           <MoreBtn>Show More</MoreBtn>

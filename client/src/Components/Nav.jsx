@@ -1,8 +1,20 @@
 import React from "react"
 import { withRouter, Link, NavLink } from "react-router-dom"
 import "../css/Nav.css"
+import axios from "axios"
+axios.defaults.withCredentials = true
 
-export default function Nav(props) {
+export default withRouter(function Nav(props) {
+  const logOutFunc = () => {
+    axios
+      .post("/logout")
+      .then((res) => {
+        window.location.href = "/"
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
   return (
     <div className="nav_total">
       <div className="logo">
@@ -16,7 +28,7 @@ export default function Nav(props) {
               Login
             </NavLink>
           ) : (
-            <NavLink to="/logout" activeClassName="active" className="link">
+            <NavLink to="/logout" activeClassName="active" className="link" onClick={logOutFunc}>
               Logout
             </NavLink>
           )}
@@ -37,4 +49,4 @@ export default function Nav(props) {
       </div>
     </div>
   )
-}
+})

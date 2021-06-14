@@ -28,11 +28,12 @@ class Login extends React.Component {
 
           if (success) {
             alert("로그인 성공!")
-
-            this.props.change("id", event.target[0].value)
-            this.props.change("nickName", res.data._user_name)
-            this.props.change("loginCheck", true)
-            this.props.change("mbti", res.data._user_mbti)
+            let temp = {
+              id: event.target[0].value,
+              nickName: res.data._user_name,
+              loginCheck: true,
+            }
+            this.props.change(temp)
             this.props.history.push("/")
           } else {
             alert("로그인 실패")
@@ -46,7 +47,6 @@ class Login extends React.Component {
     }
   }
   render() {
-    const loginImg = "images/image.png"
     return (
       <div className="haha">
         <div className="total">

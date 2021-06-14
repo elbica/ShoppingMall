@@ -16,20 +16,23 @@ class Profile extends React.Component {
   async componentDidMount() {
     await Axios.post("/")
       .then((res) => {
-        this.props.change("id", res.data.id)
-        this.props.change("nickName", res.data.nickName)
-        this.props.change("loginCheck", res.data.loginCheck)
+        let temp = {
+          id: res.data.id,
+          nickName: res.data.nickName,
+          loginCheck: res.data.loginCheck,
+        }
+
+        this.props.change(temp)
       })
       .catch((err) => {
         console.log(err)
       })
     if (!this.props.array.loginCheck) {
+      console.log(this.props.array)
       alert("로그인이 필요합니다!")
       this.props.history.push("/login")
     } else {
-      let mbti = this.props.array.mbti
-      if (!mbti) mbti = "결과가 없습니다"
-      this.setState({ nickName: this.props.array.nickName, testResult: mbti })
+      this.setState({ nickName: this.props.array.nickName })
     }
   }
   render() {

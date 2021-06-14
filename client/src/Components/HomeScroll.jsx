@@ -24,7 +24,7 @@ const ScrollImg = (props) => {
         img["version"] = 1
         console.log(img)
         return (
-          <div style={{ display: "inline-block", position: "relative" }}>
+          <div key={i} style={{ display: "inline-block", position: "relative" }}>
             <div
               className="image"
               style={{
