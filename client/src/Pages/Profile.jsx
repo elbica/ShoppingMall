@@ -10,8 +10,23 @@ class Profile extends React.Component {
     super(props)
     this.state = {
       nickName: "",
-      testResult: "",
+      updateFlag: false,
     }
+  }
+  handleUpdate = (e) => {
+    this.setState({ updateFlag: !this.state.updateFlag })
+  }
+  update = async (e) => {
+    e.preventDefault()
+    let id = this.props.array.id
+    await Axios.post(`/profile/update/${id}`, { data: e.target[0].value }).then((res) => {
+      if (res.data.update) {
+        alert("닉네임이 수정되었습니다")
+        this.setState({ nickName: this.state.nickName, updateFlag: false })
+      } else {
+        alert("수정 실패")
+      }
+    })
   }
   async componentDidMount() {
     await Axios.post("/")
@@ -51,10 +66,28 @@ class Profile extends React.Component {
         </div>
         <div className="result">
           <p className="heads">닉네임</p>
-          <input type="text" className="box" value={this.state.nickName} disabled />
+          <form
+            onSubmit={(e) => {
+              this.update(e)
+            }}
+          >
+            {!this.state.updateFlag ? (
+              <>
+                <input type="text" className="box" value={this.state.nickName} disabled />
+                <button type="text" onClick={(e) => this.handleUpdate(e)}>
+                  {"수정"}
+                </button>
+              </>
+            ) : (
+              <>
+                <input type="text" className="box" placeholder={this.state.nickName} />
+                <button type="submit">{"완료"}</button>
+              </>
+            )}
+          </form>
         </div>
         <div className="gotest">
-          <Link to="/test">
+          <Link to="/product">
             <p className="message">오늘의 상품이 궁금하다면?</p>
             <button className="btn">Go Shopping!</button>
           </Link>

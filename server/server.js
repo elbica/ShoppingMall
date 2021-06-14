@@ -76,4 +76,22 @@ app.post("/logout", function(req, res) {
     res.send()
   })
 })
+app.post("/profile/update/:id", (req, res) => {
+  let id = req.params.id
+  let nickname = req.body.nickName
+  let sql1 = "select user_nickname from user where user_nickname=?"
+  conn.query(sql1, [nickname], (err, rs) => {
+    if (!rs[0]) {
+      let sql2 = "update user set user_nickname=? where user_id=?"
+      conn.query(sql2, [nickname, id], (err, rs) => {
+        if (err) {
+          console.log(err)
+          res.send({ update: false })
+        } else {
+          res.send({ update: true })
+        }
+      })
+    }
+  })
+})
 app.listen(PORT, console.log(PORT, "번 포트가 실행되었습니다."))
