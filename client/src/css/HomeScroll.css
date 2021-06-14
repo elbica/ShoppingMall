@@ -5,6 +5,23 @@
     background-color:gray;
     border: none;
     margin: 5px 10px;
+    position:relative;
+    z-index:2;
+    /* 
+    top:-100px; */
+}
+@keyframes dot{
+    100%{opacity:1; transform: scale(3.5); opacity: 0;}
+}
+.btns button::before{
+    content: ''; width: 8px; height: 8px;
+border-radius: 4px; background: rgba(255, 255, 255, 0.705); 
+position: absolute;
+/* left: 50%; top: 50%; 
+*/
+margin-top: -4px;margin-left: -4px;  
+animation: dot 1.5s infinite;
+z-index:-1;
 }
 
 .btns button:nth-child(1),.btns button:last-child{
@@ -31,4 +48,7 @@
     transform:scale(1.5);
     transform-origin:center center;
     opacity: 1.0;
+}
+.btns button:nth-child(1)::before,.btns button:last-child::before{
+animation: none; width: 0px; height: 0px;
 }

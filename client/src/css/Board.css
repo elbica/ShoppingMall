@@ -1,0 +1,203 @@
+@charset "utf-8";
+
+
+@keyframes slid-up{
+  0%{opacity: 0;}
+  40%{opacity: 0; transform : translateY(40px);}
+}
+/*img*/
+.board .image{
+  width: 65vw; 
+  height: 18vw;
+  padding:24px 0 0 44px;
+  margin: 110px auto 10px auto;
+  
+  background: url("../images/coffee2.png") no-repeat; 
+  position:relative;
+  background-position: center; background-size: cover;
+}
+.board .image .imageTitle {animation-name: slid-up; animation-duration: 0.7s;
+  position: relative;
+  font-size: 36px;
+  text-align: left;
+  color: #f5f5f5; left: 0;
+  font-weight: 600;
+}
+.board .image .imageText {animation-name: slid-up; animation-duration: 1.2s;
+  line-height: 28px;
+  text-align: left; bottom:20px;
+  position: absolute;
+
+  color: #ffffffea;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1.3px;
+}
+.board .image .imageTitle::after{
+  content: ""; width:450px; height: 3px; background: #e9e9e9;
+  position: absolute; bottom: -10px; left:-10px;
+}
+
+
+/*게시글*/
+.board table{
+  width:100%; position: relative; top:5px;
+  /* background-color: #b4e7f8; */
+}
+.board table thead tr{ border-top: rgb(90, 90, 90) 3px solid; box-sizing: border-box;
+  background:#7c7c7c; color: #ffffffea; height: 2.4vw;  width:100%; font-size: 16px;
+
+}
+.board table thead tr th{
+  vertical-align: middle; font-weight: 400;
+}
+thead tr .head-1{width:6%;}
+thead tr .head-2{width:30%;}
+thead tr .head-3{width:12%;}
+thead tr .head-4{width:10%;}
+thead tr .head-5{width:6%;}
+thead tr .head-6{width:6%;}
+thead tr .head-7{width:6%;}
+.board .text {
+  position: absolute;
+  width: 65vw;
+  /*height: 687px;*/
+  left: 0;
+  right: 0;
+  margin: 0px auto 0px auto;
+}
+/*반응형*/
+@media (max-width: 767px) {
+  /*글 작성*/
+  .board .text {
+    position: absolute;
+    width: 94%;
+    /*height: 687px;*/
+    left: 0;
+    right: 0;
+    margin: 0px auto 0px auto;
+  }
+  .board table thead tr{ border-top: rgb(90, 90, 90) 3px solid; box-sizing: border-box;
+    background:#7c7c7c; color: #eeeeeeea; height: 44px;  width:100%; font-size: 14px;
+  }
+  /*메인 이미지*/
+  .board .image {
+    height: 250px;
+    margin-top: 0px;
+    padding-left: 15px;
+    width:100%;
+    padding-top: 73px;
+  }
+  .board .image .imageTitle {animation-name: slid-up; animation-duration: 0.7s;
+    position: relative;
+    font-size: 20px;
+    text-align: left;
+    color: #e9e9e9; left: 0;
+    font-weight: 200;
+  }
+  .board .image .imageText {animation-name: slid-up; animation-duration: 1.2s;
+    line-height: 20px;
+    text-align: left; bottom:13px;
+    position: absolute;
+
+    color: #eeeeeeea;
+    font-size: 12px;
+    font-weight: 140;
+    letter-spacing: 1px;
+  }
+  .board .image .imageTitle::after{ /*선*/
+    content: ""; width:100px; height: 1.5px; background: #e9e9e9;
+    position: absolute; bottom: -7px; left:1px;
+  }
+
+  /*게시글*/
+  .board .text .search ul
+  {
+    display: none;
+  }
+}
+.Boardrow td{
+  font-size: 16px;
+  border-bottom: 1px rgb(170, 170, 170) solid; height: 2.4vw; vertical-align: middle; color: rgb(83, 83, 83);
+}
+.Boardrow td:hover, .Boardrow td:focus{
+  color:black;
+}
+.board .text .search .write {
+  float: left; cursor: pointer;
+  width: 70px; background: #7c7c7c; color:#eeeeeeea;
+  height: 2.2vw;
+  border-style: solid; font-size: 13px; transition: 0.3s all;
+  border-width: 1.3px; position: relative; top:5px; border-radius: 6px;
+  border-color: rgba(134, 134, 134, 0.479);
+}
+.board .text .search .write:hover, .board .text .search .write:focus{
+  background: #666666; transform: translateY(-2px); font-weight: bold; box-shadow: 3px 6px 9px rgba(50,50,93,0.25); 
+}
+.board .text .search ul {
+  float: right;
+  
+}
+.board .text .search li {
+  /*ul로 하면 옆으로 정렬 x*/
+  display: inline-block; vertical-align: middle;
+  margin-left: 6px;
+}
+.board .text .search li img {
+  width: 36px; margin-top: 3px; 
+  height: 36px;
+}
+.board .text .search li input {
+  height: 30px; 
+  border-style: solid; margin-right: 5px;margin-left: -5px;
+  border-width: 2px;
+  border-color: rgba(134, 134, 134, 0.479);
+}
+
+.board .text .box .index {
+  width: 100%;
+  height: 40px;
+  background-color: #dcdcdc;
+  margin-bottom: 35px;
+  padding-top: 10px;
+  padding-left: 22px;
+  padding-bottom: 3px;
+}
+
+.board .text .box span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(134, 134, 134, 0.479);
+  margin-bottom: 35px;
+}
+.board .text .pagenum {
+  color: #5b5b5b;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.board .text .box .index li {
+  /*일렬로*/
+  display: inline-block; 
+  color: #5b5b5b;
+  font-size: 14px;
+  font-weight: 470;
+}
+.board .text .box .index ul .test {
+  /*:앞에 띄어쓰기 주의*/
+  margin-right: 365px;
+}
+.board .text .box .index ul :nth-child(2) {
+  margin-right: 365px;
+}
+.board .text .box .index ul :nth-child(3) {
+  margin-right: 70px;
+}
+.board .text .box .index ul :nth-child(4) {
+  margin-right: 33px;
+}
+.board .text .box .index ul img {
+  width: 17px;
+  height: 16px;
+}

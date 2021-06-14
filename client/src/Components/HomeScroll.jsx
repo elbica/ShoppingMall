@@ -28,6 +28,7 @@ const ScrollImg = (props) => {
             <div
               className="image"
               style={{
+                backgroundColor: "white",
                 display: "inline-block",
                 margin: "0 1.5vw",
                 border: "2px solid gray",

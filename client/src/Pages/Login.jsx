@@ -1,7 +1,7 @@
 import React from "react"
 import Input from "../Components/Input"
 import { withRouter, Link } from "react-router-dom"
-// import LoginQuestion from "/images/login_question.png"
+import LoginQuestion from "../images/login_question.png"
 import "../css/Login.css"
 import Axios from "axios"
 const headers = { withCredentials: true }
@@ -81,7 +81,7 @@ class Login extends React.Component {
               </div>
               <div className="etc">
                 <div className="finds">
-                  <img src={loginImg} alt="" />
+                  <img src={LoginQuestion} alt="" />
                   <div className="find">
                     <Link to="/find_id">아이디 찾기</Link>
                     <span></span>

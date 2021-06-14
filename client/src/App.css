@@ -14,10 +14,12 @@ address, em, i {font-style: normal;}
 html,body,#root{height: 100%; box-sizing: border-box;}
 
 .App {
+   background: rgb(255, 240, 243);
    height: 100%; width:100%; overflow-x: hidden;
 }
 
 
 .nav{align-items: center;background: white; position: fixed; z-index: 6;
-    padding: 20px 3vw 0 3vw; width: 100vw;opacity: 0.9;}
+   margin:20px 2vw 0 2vw;
+    padding: 5px 3vw 10px 3vw; width: 96vw;opacity: 0.9;border-radius: 40px;}
 

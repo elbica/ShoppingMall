@@ -11,7 +11,7 @@ const Griddiv = styled.div`
   flex-wrap: wrap;
   margin: 0 auto;
   width: 80vw;
-  row-gap: 27px;
+  row-gap: 25px;
   padding-top: 80px;
 `
 const ShopButton = styled.button`
@@ -92,7 +92,7 @@ export default function Home() {
   return (
     <div className="home_total">
       <div className="home_images" style={{ position: "relative" }}>
-        <HomeScroll></HomeScroll>
+        <HomeScroll className="home_image"></HomeScroll>
         <Welcome className="welcome">
           <div className="exit" onClick={handleCloseWelcome}>
             x

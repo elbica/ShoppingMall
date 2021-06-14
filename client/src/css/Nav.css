@@ -7,7 +7,7 @@
 .nav_total .logo{background-color: #fff; display: inline-block; }
 .nav_total .logo a{
     font-stretch: expanded;
-    font-size: 65px; font-family: "Helvetica Extended Medium";
+    font-size: 60px; font-family: "Helvetica Extended Medium";
     letter-spacing:-1px; color:rgb(31, 31, 31); font-weight: 600;padding-left: 2.5vw;
 }
 .nav_total .menu{
