@@ -31,19 +31,6 @@ class Profile extends React.Component {
     this.setState({ nickName: nickname, updateFlag: false })
   }
   async componentDidMount() {
-    await Axios.post("/")
-      .then((res) => {
-        let temp = {
-          id: res.data.id,
-          nickName: res.data.nickName,
-          loginCheck: res.data.loginCheck,
-        }
-
-        this.props.change(temp)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
     if (!this.props.array.loginCheck) {
       console.log(this.props.array)
       alert("로그인이 필요합니다!")
