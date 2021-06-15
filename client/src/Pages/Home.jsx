@@ -64,10 +64,11 @@ const Welcome = styled.div`
     position: absolute;
     top: 5px;
     right: 10px;
-    width: 1rem;
-    height: 1rem;
-    background-color: grey;
+    width: 1.1rem;
+    height: 1.1rem;
+    /* background-color: grey; */
     display: flex;
+    color: #707070;
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -95,7 +96,7 @@ export default function Home() {
         <HomeScroll className="home_image"></HomeScroll>
         <Welcome className="welcome">
           <div className="exit" onClick={handleCloseWelcome}>
-            x
+            X
           </div>
           <h1 style={{ margin: "1vw auto 2vw auto" }}>Welcome!</h1>
           <p>

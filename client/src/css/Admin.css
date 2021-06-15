@@ -1,0 +1,10 @@
+.admin_wrapper{
+    width: 80vw; margin:0 auto;
+    padding-top: 140px;
+}
+.admin_wrapper h1{ box-sizing:border-box;
+    background: #df431c; border: 2px solid brown;
+    padding:6px 15px; border-radius: 10px;
+    color:white; margin-bottom: 10px;
+    font-size: 26px;
+}

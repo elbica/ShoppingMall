@@ -1,0 +1,44 @@
+.admin_item{
+    box-sizing: border-box;
+    background: white; border-radius: 10px;
+    margin-bottom: 10px; padding: 10px 20px;
+}
+.admin_item>img{
+    margin-right: 30px; border:1.5px solid lightgray; 
+    box-shadow: 0 0 10px rgb(0,0,0,0.3); padding: 5px;
+    border-radius: 10px; vertical-align: middle;
+}
+.admin_item .admin_item_content{
+    vertical-align: middle;
+}
+.admin_item_content input, .admin_item_content textarea{
+    width: 42vw; 
+    background-color: white; border: 1.5px lightgray solid;outline: none; 
+    border-radius: 6px; padding: 0px 7px;transition: 0.5s all; font-size: 20px;
+    padding: 10px 10px;
+}
+.admin_item_content input:focus, .admin_item_content textarea:focus{
+    box-shadow: 0px 0px 8px 0.1em rgba(13, 56, 250, 0.5); 
+}
+.admin_item_content input{
+    display: block; height: 35px; margin-bottom: 10px;
+}
+.admin_item_content textarea{
+    height:160px;
+}
+.admin_item .admin_item_btn{
+    margin-left: 1.6vw;position: relative;
+    height: 208px; vertical-align: middle;
+}
+.admin_item_btn .admin_item_btn_u,.admin_item_btn .admin_item_btn_d{
+    width: 10vw; height: 70px; margin:20px 0; border-radius: 30px;
+    border: 2px solid brown; background: #df512d;transition: 0.5s all;
+    font-size: 24px; color:white; font-weight: bold;
+    box-shadow: 0 0 10px 2px rgb(0,0,0,0.3);
+}
+.admin_item_btn .admin_item_btn_d{
+    position: absolute; bottom: 0; left:0;
+}
+.admin_item_btn .admin_item_btn_u:hover,.admin_item_btn .admin_item_btn_d:hover{
+    opacity: 0.7;
+}
