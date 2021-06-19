@@ -8,21 +8,14 @@ Axios.defaults.withCredentials = true
 class Board_view extends React.Component {
   state = {
     id: this.props.match.params.id,
-    writer: "123",
-    date: 10,
-    title: "2",
-    view: 10,
-    like: 30,
-    content: "3",
+    writer: "",
+    date: 0,
+    title: "",
+    view: 0,
+    content: "",
     flag: false,
-    comment: [
-      {
-        comment_content: "test",
-        user_name: "tt",
-        comment_date: "0000-00-00",
-      },
-    ],
-    nickName: "23",
+    comment: [],
+    nickName: "",
     prevLink: 1,
   }
   componentDidMount() {
@@ -38,7 +31,7 @@ class Board_view extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     if (e.target[0].value !== "") {
-      let temp = { comment_content: e.target[0].value }
+      let temp = { comment_content: e.target[0].value, nickname: this.state.nickName }
 
       Axios.post(`/comment/${this.state.id}`, temp)
         .then((res) => {
@@ -92,8 +85,7 @@ class Board_view extends React.Component {
             <li className="control">{this.state.date}</li>
             <li>조회수</li>
             <li className="control">{this.state.view}</li>
-            <li>좋아요</li>
-            <li className="control">{this.state.like}</li>
+
             <li>댓글수</li>
             <li className="control">{this.state.comment.length}</li>
             {this.state.writer === this.state.nickName && (
@@ -122,9 +114,10 @@ class Board_view extends React.Component {
         <div className="scroll">
           <div className="comments">
             <h2>댓글</h2>
-            {this.state.comment.map((c, idx) => (
-              <Comments key={idx} comment={c} loginName={this.state.nickName}></Comments>
-            ))}
+            {this.state.comment.map((c, idx) => {
+              console.log(c)
+              return <Comments key={idx} {...c} loginName={this.state.nickName}></Comments>
+            })}
           </div>
           <div className="writeComment">
             <form className="write" onSubmit={(e) => this.handleSubmit(e)}>

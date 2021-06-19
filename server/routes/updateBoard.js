@@ -2,14 +2,9 @@ const express = require("express")
 const router = express.Router()
 
 const mysql = require("mysql")
-const conn = mysql.createConnection({
-  connectionLimit: 10,
-  host: "rds-mysql.czcx3u99qijn.ap-northeast-2.rds.amazonaws.com",
-  user: "admin",
-  port: "3306",
-  password: "12345678",
-  database: "table_connect",
-})
+const dbconfig = require("../dbconfig.json")
+
+const conn = mysql.createConnection(dbconfig)
 conn.connect()
 // 수정폼
 

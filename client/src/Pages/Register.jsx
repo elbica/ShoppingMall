@@ -67,7 +67,6 @@ class Register extends React.Component {
   handle = (e, v) => {
     if (v === undefined) this.setState({ [e.target.name]: e.target.value })
     else {
-      console.log(e)
       if (e.target.name === "passwordCheck" && v)
         this.setState({
           possible: {

@@ -62,7 +62,6 @@ class BoardTable extends React.Component {
           date: "3",
           writer: "3",
           view: "3",
-          board_like: "3",
           comments: "3",
           des: "3",
         },
@@ -72,7 +71,6 @@ class BoardTable extends React.Component {
           date: "2",
           writer: "2",
           view: "3",
-          board_like: "3",
           comments: "4",
           des: "5",
         },
@@ -81,8 +79,8 @@ class BoardTable extends React.Component {
     }
   }
   componentDidMount() {
-    // this.getLists()
-    this.addLists()
+    this.getLists()
+    // this.addLists()
   }
 
   getLists = async () => {
@@ -105,7 +103,6 @@ class BoardTable extends React.Component {
         date: "",
         writer: "",
         view: "",
-        board_like: "",
         comments: "",
         des: "",
       })
@@ -144,9 +141,7 @@ class BoardTable extends React.Component {
               <th className="head-3">Date</th>
               <th className="head-4">Writer</th>
               <th className="head-5">View</th>
-              <th className="head-6">
-                <img src={board3} alt="" width="20px" />
-              </th>
+
               <th className="head-7">
                 <img src={board4} alt="" width="20px" />
               </th>

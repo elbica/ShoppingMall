@@ -37,16 +37,14 @@ var deleteBoardRouter = require("./routes/deleteBoard")
 var updateBoardRouter = require("./routes/updateBoard")
 var commentRouter = require("./routes/comment")
 var authRouter = require("./routes/auth")
-var pwdResetRouter = require("./routes/reset_pwd")
 
 app.use("/auth", authRouter)
-// app.use("/add", addBoardRouter)
-// app.use("/detail", boardDetailRouter)
-// app.use("/list", boardListRouter)
-// app.use("/delete", deleteBoardRouter)
-// app.use("/update", updateBoardRouter)
-// app.use("/comment", commentRouter)
-// app.use("/reset_pwd", pwdResetRouter)
+app.use("/list", boardListRouter)
+app.use("/detail", boardDetailRouter)
+app.use("/comment", commentRouter)
+app.use("/add", addBoardRouter)
+app.use("/delete", deleteBoardRouter)
+app.use("/update", updateBoardRouter)
 
 //home
 app.post("/", function(req, res) {

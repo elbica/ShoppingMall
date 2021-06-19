@@ -2,13 +2,8 @@ const express = require("express")
 const router = express.Router()
 
 const mysql = require("mysql")
-const conn = mysql.createConnection({
-  host: "rds-mysql.czcx3u99qijn.ap-northeast-2.rds.amazonaws.com",
-  user: "admin",
-  port: "3306",
-  password: "12345678",
-  database: "table_connect",
-})
+const dbconfig = require("../dbconfig.json")
+const conn = mysql.createConnection(dbconfig)
 conn.connect()
 //리스트
 router.get("/", function(req, res) {
@@ -40,7 +35,7 @@ router.get("/:currentPage", function(req, res) {
     }
     //쿼리문 작성, 실행, model영역에 세팅, 포워드 방식으로 boardList화면 출력
     var sql =
-      'SELECT board_id as id ,board_title as title , DATE_FORMAT(add_date,"%m/%d %H:%i") as date,user_name as writer,board_view as view,board_like,board_cnum ,board_content as des FROM board ORDER BY board_id DESC LIMIT ?,?'
+      'SELECT board_id as id ,board_title as title , DATE_FORMAT(add_date,"%m/%d %H:%i") as date,user_nickname as writer,board_view as view,board_cnum ,board_content as des FROM board ORDER BY board_id DESC LIMIT ?,?'
     // beginRow가 20이면 20부터 10개씩 20-29까지 정렬됨
     conn.query(sql, [beginRow, rowPerPage], function(err, rs) {
       if (err) {

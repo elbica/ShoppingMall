@@ -3,13 +3,8 @@ const bodyParser = require("body-parser")
 const router = express.Router()
 
 const mysql = require("mysql")
-const conn = mysql.createConnection({
-  host: "rds-mysql.czcx3u99qijn.ap-northeast-2.rds.amazonaws.com",
-  user: "admin",
-  port: "3306",
-  password: "12345678",
-  database: "table_connect",
-})
+const dbconfig = require("../dbconfig.json")
+const conn = mysql.createConnection(dbconfig)
 conn.connect()
 
 router.post("/update/:comment_id", (req, res) => {
@@ -25,8 +20,8 @@ router.post("/update/:comment_id", (req, res) => {
   )
 })
 router.post("/delete", (req, res) => {
-  console.log(req.body.comment_id)
-  let id = req.body.comment_id
+  console.log(req.body.id)
+  let id = req.body.id
   conn.query(
     "update board set board_cnum = board_cnum-1 where board_id = (select board_id from comment where comment_id = ?)",
     [id]
@@ -46,11 +41,11 @@ router.post("/:board_id", function(req, res) {
     const board_id = req.params.board_id
 
     const user_id = req.session.user_id
-    const user_name = req.session.user_name
+    const user_name = req.body.nickname
     const comment_content = req.body.comment_content
 
     const sql =
-      "INSERT INTO comment(user_id,user_name,board_id,comment_content,comment_date) VALUES(?,?,?,?,now())"
+      "INSERT INTO comment(user_id,user_nickname,board_id,comment_content,comment_date) VALUES(?,?,?,?,now())"
     conn.query(sql, [user_id, user_name, board_id, comment_content], function(err, result) {
       if (err) {
         console.log(err)

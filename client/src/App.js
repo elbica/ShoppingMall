@@ -12,6 +12,7 @@ import Profile from "./Pages/Profile"
 import Cart from "./Pages/Cart"
 import Admin from "./Pages/Admin"
 import axios from "axios"
+import Write from "./Pages/write"
 function App() {
   let [userState, setUserState] = useState({
     loginCheck: false,
@@ -57,6 +58,12 @@ function App() {
         />
         <Route path="/cart" exact render={props => <Cart array={userState} {...props} />} />
         <Route path="/admin" exact render={props => <Admin array={userState} {...props} />} />
+        <Route
+          path="/write"
+          exact
+          render={props =>
+            <Write possible={userState.loginCheck} change={setUserState} {...props} />}
+        />
         {/*
         <Route path="/cart" exact component={}></Route>
       */}

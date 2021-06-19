@@ -2,13 +2,9 @@ const express = require("express")
 const router = express.Router()
 
 const mysql = require("mysql")
-const conn = mysql.createConnection({
-  host: "rds-mysql.czcx3u99qijn.ap-northeast-2.rds.amazonaws.com",
-  user: "admin",
-  port: "3306",
-  password: "12345678",
-  database: "table_connect",
-})
+const dbconfig = require("../dbconfig.json")
+
+const conn = mysql.createConnection(dbconfig)
 conn.connect()
 
 // 삭제폼(비밀번호 확인을 위한)

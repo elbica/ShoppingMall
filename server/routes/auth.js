@@ -39,8 +39,7 @@ router.post("/", function(req, res, err) {
   let user_nickname = req.body.user_nickname // user_realname
   let user_q = req.body.user_q // verify question
   let user_a = req.body.user_a // verify answer
-  let sql = `INSERT INTO user(user_id, user_password, user_nickname, user_question, user_answer)
-              VALUES (?,?,?,?,?)`
+  let sql = `INSERT INTO user(user_idx,user_id, user_password, user_nickname, user_question, user_answer) VALUES (0,?,?,?,?,?)`
 
   conn.query(sql, [user_id, user_password, user_nickname, user_q, user_a], (err, rs) => {
     if (err) {
