@@ -44,11 +44,13 @@ const Product = (props) => {
     return (
         <div className="product_box">
             <Image {...props}></Image>
-            <div className="product_content">
-                <p>{props.title}</p>
-                <p>{props.price}</p>
-                <p>{props.review}</p>
-            </div>
+            <Link to={`/product/${props.title}`}>
+                <div className="product_content">
+                    <p>{props.title}</p>
+                    <p>{props.price}</p>
+                    <p>{props.review}</p>
+                </div>
+            </Link>
         </div>
     );
 };
