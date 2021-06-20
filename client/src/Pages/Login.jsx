@@ -89,7 +89,7 @@ class Login extends React.Component {
                   </div>
                 </div> */}
                 <div className="register">
-                  <Link to="/register">Bridge.inha가 처음이신가요?</Link>
+                  <Link to="/register">ELBI가 처음이신가요?</Link>
                 </div>
               </div>
             </form>
@@ -101,13 +101,13 @@ class Login extends React.Component {
             />
             <div className="wrap">
               <div className="title">
-                <h2>Bridge.inha</h2>
+                <h2>ELBI</h2>
               </div>
               <span className="line"></span>
               <div className="description">
                 <p>
-                  Bridge.inha는 Psychological test(심리테스트)의 결과를 기반으로 사용자에게
-                  인하대학교 후문 근처의 음식점을 소개하는 서비스 입니다.
+                  ELBI에 오신 것을 환영합니다! ELBI는 사용자 친화적인, 사용자만을 위한 토탈
+                  쇼핑몰입니다.
                 </p>
               </div>
             </div>

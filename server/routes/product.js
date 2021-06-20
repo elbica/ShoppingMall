@@ -22,8 +22,9 @@ const upload = multer({
 }).single("file")
 
 router.get("/", (req, res) => {
-  let sql = "select * from product;"
-  conn.query(sql, (err, rs) => {
+  let limits = 6
+  let sql = "select * from product order by product_id desc limit 0,?;"
+  conn.query(sql, [limits], (err, rs) => {
     res.send(rs)
   })
 })
