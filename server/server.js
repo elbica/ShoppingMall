@@ -9,6 +9,9 @@ const cors = require("cors")
 app.use(cors())
 const PORT = process.env.PORT || 5000
 
+app.get("/", (req, res) => {
+  res.send("hello")
+})
 app.use(
   session({
     secret: "any", // 보안을 위한 키
@@ -23,11 +26,11 @@ const conn = mysql.createConnection(dbconfig)
 conn.connect()
 
 //템플릿엔진 설정
-app.set("view engine", "pug")
 app.use(express.json())
 //정적 미들웨어
 app.use(express.static("public"))
-//post 미들웨어
+app.use("/upload", express.static("uploads"))
+
 app.use(bodyParser.urlencoded({ extended: false }))
 
 var addBoardRouter = require("./routes/addBoard")
@@ -37,6 +40,7 @@ var deleteBoardRouter = require("./routes/deleteBoard")
 var updateBoardRouter = require("./routes/updateBoard")
 var commentRouter = require("./routes/comment")
 var authRouter = require("./routes/auth")
+let productRouter = require("./routes/product")
 
 app.use("/auth", authRouter)
 app.use("/list", boardListRouter)
@@ -45,6 +49,7 @@ app.use("/comment", commentRouter)
 app.use("/add", addBoardRouter)
 app.use("/delete", deleteBoardRouter)
 app.use("/update", updateBoardRouter)
+app.use("/product", productRouter)
 
 //home
 app.post("/", function(req, res) {

@@ -1,0 +1,41 @@
+.admin_add_item{
+    width:80vw; margin:0 auto;
+    background-color: white; border-radius: 15px;
+    margin-bottom: 10px; 
+}
+.admin_add_item input{
+    display: inline-block;
+}
+.admin_add_item .set_content{vertical-align: middle;
+    display: inline-block; width: 42vw;
+}
+.set_content .set_title, .set_content .set_descript, .set_content .set_price{
+    width:100%; 
+    background-color: white; border: 1.5px lightgray solid;outline: none; 
+    border-radius: 6px; padding: 0px 7px;transition: 0.5s all; font-size: 20px;
+    padding: 10px 10px; margin:7px;
+}
+.admin_add_item .set_file{
+    vertical-align: middle; width: 15vw; margin-left: 4vw;
+    border: 2px solid brown; background: #df512d;transition: 0.5s all;
+    font-size: 16px; color:white; font-weight: bold;
+    box-shadow: 0 0 10px 2px rgb(0,0,0,0.3); margin-right: 2vw;
+}
+.admin_add_item .set_file:hover{
+    transform: scale(1.15);
+}
+.admin_add_item .add_btn{
+    width: 10vw; height: 70px;  border-radius: 30px;
+    border: 2px solid rgb(131, 33, 33); background:#df512d;transition: 0.5s all;
+    font-size: 24px; color:white; font-weight: bold;
+    box-shadow: 0 0 10px 2px rgb(0,0,0,0.3);
+    margin-left: 25px;
+}
+.admin_add_item .add_btn:hover{
+    transform: scale(1.15);
+
+}
+.set_content .set_title:hover, .set_content .set_descript:hover{
+    box-shadow: 0px 0px 8px 0.1em rgba(13, 56, 250, 0.5); 
+
+}
