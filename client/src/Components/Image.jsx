@@ -22,9 +22,9 @@ const WrapImage = styled.div`
 const Content = (props) => {
   return (
     <div className={props.cn} style={{ visibility: props.visi }}>
-      <p className="imgtitle">{props.title}</p>
-      <p className="imgdes">{props.descript}</p>
-      <p className="imgprice">{props.price}</p>
+      <p className="imgtitle">{props.product_title}</p>
+      <p className="imgdes">{props.product_descript}</p>
+      <p className="imgprice">{props.product_price}</p>
     </div>
   )
 }
@@ -53,7 +53,7 @@ export default function Image(props) {
       }}
     >
       <img
-        src={props.src}
+        src={props.file_name}
         alt="이미지"
         style={{
           objectFit: "cover",

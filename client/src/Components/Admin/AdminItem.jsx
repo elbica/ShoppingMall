@@ -1,35 +1,43 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import { useHistory } from "react-router-dom"
 import "../../css/AdminItem.css"
-export default function AdminItem(
-  { history, file_name, product_id, product_title, product_descript, product_price },
-  key
-) {
+export default function AdminItem({
+  file_name,
+  product_id,
+  product_title,
+  product_descript,
+  product_price,
+  popItems,
+}) {
   const [title_, setTitle] = useState("")
   const [descript_, setDescript] = useState("")
   const [price_, setPrice] = useState(0)
   const [Image, setImage] = useState("")
+  let history = useHistory()
   // const img;
   useEffect(() => {
-    setTitle(product_title)
-    setDescript(product_descript)
-    setPrice(product_price)
-    setImage(file_name)
+    if (title_ !== product_title) {
+      setTitle(product_title)
+      setDescript(product_descript)
+      setPrice(product_price)
+      setImage(file_name)
+    }
+
     //  axios.post(file_name).then(res=>{
     //   img =
     //  })
-  }, [])
+  })
   const handleUpdate = (e) => {
     e.preventDefault()
     if (window.confirm("해당 상품을 수정하시겠습니까?")) {
-      let etitle = document.querySelector(".admin_item_title").value
-      let edescript = document.querySelector(".admin_item_descript").value
-      let args = { etitle, edescript }
+      // let etitle = document.querySelector(".admin_item_title").value
+      // let edescript = document.querySelector(".admin_item_descript").value
+      let args = { title: title_, descript: descript_, product_id, price: price_ }
       axios
-        .patch(`/product/${product_id}`, args)
+        .patch(`/product`, args)
         .then((res) => {
           alert("상품이 수정되었습니다")
-          history.push("/admin")
         })
         .catch((err) => {
           console.log(err)
@@ -43,14 +51,13 @@ export default function AdminItem(
         .delete(`/product/${product_id}`)
         .then((res) => {
           alert("상품이 삭제되었습니다")
-          history.push("/admin")
+          popItems(product_id)
         })
         .catch((err) => {
           console.log(err)
         })
     }
   }
-  console.log("render")
   return (
     <div className="admin_item">
       <img

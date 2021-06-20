@@ -22,12 +22,30 @@ const upload = multer({
 }).single("file")
 
 router.get("/", (req, res) => {
-  let sql = "select * from product;"
-  conn.query(sql, (err, rs) => {
+  let limits = 6
+  let sql = "select * from product order by product_id desc limit 0,?;"
+  conn.query(sql, [limits], (err, rs) => {
     res.send(rs)
   })
 })
-router.patch("/", (req, res) => {})
+router.patch("/", (req, res) => {
+  let { title, descript, product_id, price } = req.body
+  let sql =
+    "update product set product_title=?, product_descript=?, product_price=? where product_id=?"
+  let param = [title, descript, price, product_id]
+  conn.query(sql, param, (err, rs) => {
+    if (err) console.log(err)
+    else res.send({ update: true })
+  })
+})
+router.delete(`/:product_id`, (req, res) => {
+  let id = req.params.product_id
+  let sql = "delete from product where product_id=" + id
+  conn.query(sql, (err, rs) => {
+    if (err) console.log(err)
+    else res.send({ delete: true })
+  })
+})
 
 router.post("/", (req, res, next) => {
   upload(req, res, err => {

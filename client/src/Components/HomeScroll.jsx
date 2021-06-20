@@ -1,15 +1,35 @@
 import React, { useState, useEffect } from "react"
 import Image from "./Image"
 import "../css/HomeScroll.css"
+import axios from "axios"
 
-let imgs = [
-  { src: "images/image.png", title: "12", descript: "324", price: 10, width: 25 },
-  { src: "images/image.png", title: "23", descript: "asd", price: 20, width: 25 },
-  { src: "images/image.png", title: "34", descript: "sad", price: 30, width: 25 },
-  { src: "images/image.png", title: "56", descript: "ds", price: 440, width: 25 },
-  { src: "images/image.png", title: "78", descript: "we", price: 50, width: 25 },
-]
 const ScrollImg = (props) => {
+  const [Images, setImages] = useState([
+    {
+      file_name: "image.png",
+      product_title: "12",
+      product_descript: "324",
+      product_price: 10,
+      product_id: 1,
+    },
+  ])
+
+  useEffect(async () => {
+    let temp = []
+    await axios.get("/product").then((res) => {
+      temp = res.data
+    })
+    for (let i = temp.length; i < 6; i++)
+      temp.push({
+        file_name: "image.png",
+        product_title: "12",
+        product_descript: "324",
+        product_price: 10,
+        product_id: 1,
+      })
+    setImages(temp)
+  }, [])
+
   return (
     <div
       className="scroll_imgs"
@@ -20,9 +40,11 @@ const ScrollImg = (props) => {
         transition: "0.5s all",
       }}
     >
-      {imgs.map((img, i) => {
-        img["version"] = 1
-        console.log(img)
+      {Images.map((img, i) => {
+        let temp = JSON.parse(JSON.stringify(img))
+        temp["width"] = 25
+        temp["file_name"] = "http://localhost:5000/upload/" + temp["file_name"]
+        temp["version"] = 1
         return (
           <div key={i} style={{ display: "inline-block", position: "relative" }}>
             <div
@@ -36,7 +58,7 @@ const ScrollImg = (props) => {
                 boxShadow: "6px 9px 18px rgba(50,50,93,0.4)",
               }}
             >
-              <Image {...img} />
+              <Image {...temp} />
             </div>
           </div>
         )

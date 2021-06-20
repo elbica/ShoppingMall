@@ -8,6 +8,11 @@ export default ({ history, array: { id, loginCheck } }) => {
   const pushItems = (parms) => {
     setItems([...items, parms])
   }
+  const popItems = (id) => {
+    let temp = items.filter((i) => i.product_id != id)
+    console.log(temp)
+    setItems(temp)
+  }
   useEffect(async () => {
     if (loginCheck && id !== "admin") {
       alert("관리자가 아닙니다!")
@@ -17,17 +22,16 @@ export default ({ history, array: { id, loginCheck } }) => {
       await axios.get("/product").then((res) => {
         temp = res.data
       })
-      console.log(temp)
       setItems(temp)
     }
   }, [])
-
+  console.log("render")
   return (
     <div className="admin_wrapper">
       <h1>관리자 페이지</h1>
       <AddItem pushItems={pushItems} />
       {items.map((i, k) => {
-        return <AdminItem {...i}></AdminItem>
+        return <AdminItem popItems={popItems} {...i}></AdminItem>
       })}
     </div>
   )

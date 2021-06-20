@@ -1,10 +1,10 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import "../css/Home.css"
 import Image from "../Components/Image"
 import HomeScroll from "../Components/HomeScroll"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
-
+import axios from "axios"
 const Griddiv = styled.div`
   display: flex;
   justify-content: space-evenly;
@@ -55,7 +55,8 @@ const Welcome = styled.div`
   opacity: 0.8;
   background-color: white;
   width: 30vw;
-  height: 20vw;
+  height: 30vh;
+  padding: 10px;
   text-align: center;
   z-index: 1;
   font-size: 1rem;
@@ -76,20 +77,35 @@ const Welcome = styled.div`
 `
 
 export default function Home() {
-  let gridImages = [
-    { src: "images/image.png", title: "12", descript: "324", price: 10, width: 20 },
-    { src: "images/image.png", title: "23", descript: "asd", price: 20, width: 20 },
-    { src: "images/image.png", title: "34", descript: "sad", price: 30, width: 20 },
-    { src: "images/image.png", title: "56", descript: "ds", price: 440, width: 20 },
-    { src: "images/image.png", title: "78", descript: "we", price: 50, width: 20 },
-    { src: "images/image.png", title: "78", descript: "we", price: 50, width: 20 },
-  ]
+  const [gridImages, setImages] = useState([
+    {
+      file_name: "image.png",
+      product_title: "12",
+      product_descript: "324",
+      product_price: 10,
+      product_id: 1,
+    },
+  ])
 
   const handleCloseWelcome = (e) => {
     e.target.parentNode.style["display"] = "none"
     console.log()
   }
-
+  useEffect(async () => {
+    let temp = []
+    await axios.get("/product").then((res) => {
+      temp = res.data
+    })
+    for (let i = temp.length; i < 6; i++)
+      temp.push({
+        file_name: "image.png",
+        product_title: "12",
+        product_descript: "324",
+        product_price: 10,
+        product_id: 1,
+      })
+    setImages(temp)
+  }, [])
   return (
     <div className="home_total">
       <div className="home_images" style={{ position: "relative" }}>
@@ -100,9 +116,7 @@ export default function Home() {
           </div>
           <h1 style={{ margin: "1vw auto 2vw auto" }}>Welcome!</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, animi voluptatem.
-            Consequuntur voluptatibus at aperiam laboriosam quo illum, esse harum nulla atque nobis
-            sint quibusdam voluptatum natus porro quis perspiciatis?
+            ELBI에 오신 것을 환영합니다! ELBI는 사용자 친화적인, 사용자만을 위한 토탈 쇼핑몰입니다.
           </p>
           <Link to="/product">
             <ShopButton>Shop Now</ShopButton>
@@ -111,7 +125,10 @@ export default function Home() {
       </div>
       <Griddiv>
         {gridImages.map((g, i) => {
-          return <Image key={i} {...g}></Image>
+          let temp = JSON.parse(JSON.stringify(g))
+          temp["width"] = 20
+          temp["file_name"] = "http://localhost:5000/upload/" + temp["file_name"]
+          return <Image key={i} {...temp}></Image>
         })}
         <Link to="/product">
           <MoreBtn>Show More</MoreBtn>
