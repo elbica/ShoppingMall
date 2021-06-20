@@ -1,2 +1,3 @@
 node_modules
 server/dbconfig.json
+server/uploads
