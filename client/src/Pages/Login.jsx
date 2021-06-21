@@ -33,6 +33,7 @@ class Login extends React.Component {
               nickName: res.data._user_name,
               loginCheck: true,
             }
+            window.sessionStorage.setItem("id", temp.id)
             this.props.change(temp)
             this.props.history.push("/")
           } else {

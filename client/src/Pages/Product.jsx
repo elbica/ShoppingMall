@@ -4,24 +4,17 @@ import Image from "../Components/Image"
 import axios from "axios"
 import "../css/Product.css"
 
-let models = [
-  {
-    src: "images/image.png",
-    title: "test",
-    price: 123,
-    review: 12,
-    width: 14,
-  },
-]
 const Product = (props) => {
   return (
     <div className="product_box">
       <Image {...props}></Image>
-      <div className="product_content">
-        <p>{props.product_title}</p>
-        <p>{props.product_price}</p>
-        {/* <p>{props.review}</p> */}
-      </div>
+      <Link to={`/product/${props.product_id}`}>
+        <div className="product_content">
+          <p>{props.product_title}</p>
+          <p>{props.product_price}</p>
+          {/* <p>{props.review}</p> */}
+        </div>
+      </Link>
     </div>
   )
 }

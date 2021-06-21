@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import "../css/Image.css"
 import styled from "styled-components"
+import axios from "axios"
+import { Link } from "react-router-dom"
 
 const CartButton = styled.button`
   background-color: #df431c;
@@ -21,17 +23,32 @@ const WrapImage = styled.div`
 
 const Content = (props) => {
   return (
-    <div className={props.cn} style={{ visibility: props.visi }}>
-      <p className="imgtitle">{props.product_title}</p>
-      <p className="imgdes">{props.product_descript}</p>
-      <p className="imgprice">{props.product_price}</p>
-    </div>
+    <Link to={`/product/${props.product_id}`}>
+      <div className={props.cn} style={{ visibility: props.visi }}>
+        <p className="imgtitle">{props.product_title}</p>
+        <p className="imgdes">{props.product_descript}</p>
+        <p className="imgprice">{props.product_price}</p>
+      </div>
+    </Link>
   )
 }
+
 const AddCart = (props) => {
+  const handleCart = (e) => {
+    let product_id = props.product_id
+    let user_id = window.sessionStorage.getItem("id")
+
+    if (!user_id) alert("로그인 후 이용해 주세요")
+    else {
+      axios.post("/cart", { product_id, user_id, product_count: 1 }).then((res) => {
+        if (res.data.lap) alert("장바구니에서 삭제되었습니다")
+        else alert("장바구니에 담겼습니다")
+      })
+    }
+  }
   return (
     <div className={props.cn} style={{ visibility: props.visi }}>
-      <CartButton>Add Cart</CartButton>
+      <CartButton onClick={handleCart}>Cart</CartButton>
     </div>
   )
 }

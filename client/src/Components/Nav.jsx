@@ -9,6 +9,7 @@ export default withRouter(function Nav(props) {
     axios
       .post("/logout")
       .then((res) => {
+        window.sessionStorage.clear()
         window.location.href = "/"
       })
       .catch((err) => {

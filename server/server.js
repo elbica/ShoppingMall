@@ -41,6 +41,7 @@ var updateBoardRouter = require("./routes/updateBoard")
 var commentRouter = require("./routes/comment")
 var authRouter = require("./routes/auth")
 let productRouter = require("./routes/product")
+let cartRouter = require("./routes/cart")
 
 app.use("/auth", authRouter)
 app.use("/list", boardListRouter)
@@ -50,6 +51,7 @@ app.use("/add", addBoardRouter)
 app.use("/delete", deleteBoardRouter)
 app.use("/update", updateBoardRouter)
 app.use("/product", productRouter)
+app.use("/cart", cartRouter)
 
 //home
 app.post("/", function(req, res) {

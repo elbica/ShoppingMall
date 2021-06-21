@@ -28,6 +28,14 @@ router.get("/", (req, res) => {
     res.send(rs)
   })
 })
+router.get("/:product_id", (req, res) => {
+  let id = req.params.product_id
+  let sql = "select * from product where product_id=" + id
+  conn.query(sql, (err, rs) => {
+    if (err) console.log(err)
+    else res.send(rs[0])
+  })
+})
 router.patch("/", (req, res) => {
   let { title, descript, product_id, price } = req.body
   let sql =
@@ -65,6 +73,18 @@ router.post("/", (req, res, next) => {
         res.send({ upload: false })
       } else res.send({ upload: true, _filename: newfilename, id: rs.insertId })
     })
+  })
+})
+router.post("/:product_id", (req, res) => {
+  let id = Number(req.params.product_id)
+  let { product_id, product_count, user_id, product_title, total_price, file_name } = req.body
+  let params = Object.values(req.body)
+  params[`product_id`] = Number(params[`product_id`])
+  let sql = "insert into purchase values (?,?,?,?,?,?,now())"
+  conn.query(sql, params, (err, rs) => {
+    console.log(rs)
+    if (err) console.log(err)
+    else res.send({ purchase: true })
   })
 })
 
