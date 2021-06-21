@@ -25,6 +25,7 @@ const Product = (props) => {
     </div>
   )
 }
+
 export default () => {
   const [Images, setImages] = useState([
     {
