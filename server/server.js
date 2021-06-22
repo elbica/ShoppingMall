@@ -103,4 +103,17 @@ app.post("/profile/update/:id", (req, res) => {
     }
   })
 })
+app.post("/profile/delete/:user_id", (req, res) => {
+  let id = req.params.user_id
+  let sql = `delete from user where user_id='${id}'`
+  conn.query(sql, (err, rs) => {
+    if (rs) {
+      delete req.session.user_id
+      delete req.session.user_name
+      req.session.save(function() {
+        res.send({ delete: true })
+      })
+    }
+  })
+})
 app.listen(PORT, console.log(PORT, "번 포트가 실행되었습니다."))

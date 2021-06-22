@@ -123,14 +123,14 @@ class BoardTable extends React.Component {
             <input type="button" className="write" value="글 작성" />
           </Link>
 
-          <ul>
+          {/* <ul>
             <li>
               <input type="text" />
             </li>
             <li>
               <img src={board2} alt="" />
             </li>
-          </ul>
+          </ul> */}
         </div>
 
         <table>

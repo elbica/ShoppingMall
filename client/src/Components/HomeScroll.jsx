@@ -19,7 +19,7 @@ const ScrollImg = (props) => {
     await axios.get("/product").then((res) => {
       temp = res.data
     })
-    for (let i = temp.length; i < 6; i++)
+    for (let i = temp.length; i < 5; i++)
       temp.push({
         file_name: "image.png",
         product_title: "12",
@@ -27,6 +27,7 @@ const ScrollImg = (props) => {
         product_price: 10,
         product_id: 1,
       })
+    temp = temp.slice(0, 5)
     setImages(temp)
   }, [])
 

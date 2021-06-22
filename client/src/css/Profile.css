@@ -1,11 +1,20 @@
 .profile_all {
     color: rgb(80, 80, 80);
     text-align: center;
-    height: 78vh; 
+    height: 78vh; position: relative;
     width: 60vw; margin:19vh auto 4vh auto;
     padding-top: 22px;
     background: white; border-radius: 30px;
     box-shadow: 2px 2px 16px rgb(0,0,0,0.3);
+}
+.profile_all .user_delete{
+    position: absolute; width:10vw;
+    right:0; text-align: center;
+}
+.user_delete .delete_btn{
+    background: gray; color:white;
+    font-size: 13px; border-radius: 10px;
+    width:80px; height: 25px; border:none; cursor: pointer;
 }
 .profile_all .title {
     position: relative;

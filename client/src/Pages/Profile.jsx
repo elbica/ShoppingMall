@@ -70,12 +70,28 @@ class Profile extends React.Component {
       })
     }
   }
+  handleDelete = () => {
+    if (window.confirm("회원 탈퇴 하시겠습니까?")) {
+      axios.post(`/profile/delete/${window.sessionStorage.getItem("id")}`).then((res) => {
+        if (res.data.delete) {
+          alert("탈퇴 되었습니다")
+          window.sessionStorage.clear()
+          window.location.href = "/"
+        }
+      })
+    }
+  }
   render() {
     return this.props.array.loginCheck ? (
       <div className="profile_all">
         <div className="title">
           <img src={peopleimg} alt="" width="48px" />
           <h1>내 정보</h1>
+        </div>
+        <div className="user_delete">
+          <button className="delete_btn" onClick={this.handleDelete}>
+            회원 탈퇴
+          </button>
         </div>
         <div className="text">
           <div className="box">

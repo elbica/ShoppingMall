@@ -46,7 +46,7 @@ router.patch("/", (req, res) => {
     else res.send({ update: true })
   })
 })
-router.delete(`/:product_id`, (req, res) => {
+router.delete(`/:product_id`, async (req, res) => {
   let id = req.params.product_id
   let sql = "delete from product where product_id=" + id
   conn.query(sql, (err, rs) => {

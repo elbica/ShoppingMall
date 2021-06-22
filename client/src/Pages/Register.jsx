@@ -44,6 +44,7 @@ class Register extends React.Component {
       })
         .then((res) => {
           alert("회원가입 성공!")
+          window.sessionStorage.setItem("id", this.state._id)
           window.location.href = "/"
         })
         .catch((err) => {
