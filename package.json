@@ -4,9 +4,9 @@
   "description": "2021-1 Internet_Programming",
   "main": "index.js",
   "scripts": {
-    "client": "cd client && yarn start",
+    "client": "cd client && npm start",
     "server": "cd server && nodemon server.js --ignore client",
-    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
