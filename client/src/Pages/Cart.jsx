@@ -3,36 +3,30 @@ import React, { useState, useEffect } from "react"
 import "../css/Cart.css"
 import ItemTemplate from "../Components/Cart/ItemTemplate"
 import ReceiptTemplate from "../Components/Cart/ReceiptTemplate"
-
+import axios from "axios"
 const mockItems = [
   {
-    image: "/images/image.png",
-    itemName: "에어 조던",
-    description: "상품 설명",
-    price: 1000,
-  },
-  {
-    image: "/images/image.png",
-    itemName: "맥북 에어",
-    description: "상품 설명",
-    price: 50000,
-  },
-  {
-    image: "/images/image.png",
-    itemName: "토마토",
-    description: "상품 설명",
-    price: 100,
+    file_name: "image.png",
+    product_title: "에어 조던",
+    product_descript: "상품 설명",
+    product_price: 1000,
+    product_count: 1,
+    product_id: 1,
   },
 ]
 
 function Cart(props) {
   const [items, setItems] = useState(mockItems)
   const [selected, setSelected] = useState(new Set())
-  useEffect(() => {
-    if (!props.array.loginCheck) {
+  useEffect(async () => {
+    let id = window.sessionStorage.getItem("id")
+    if (!id) {
       alert("로그인이 필요합니다!")
       props.history.push("/login")
     }
+    await axios.get(`/cart/${id}`).then((res) => {
+      setItems(res.data)
+    })
   }, [])
   return (
     <div className="cart__wrapper">

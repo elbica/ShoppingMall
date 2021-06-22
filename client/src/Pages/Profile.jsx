@@ -3,7 +3,32 @@ import "../css/Profile.css"
 import { withRouter, Link } from "react-router-dom"
 import peopleimg from "../images/profile_people.PNG"
 import Axios from "axios"
+import axios from "axios"
 Axios.defaults.withCredentials = true
+
+const PurchaseRow = ({ file_name, product_title, product_count, product_price, purchase_date }) => {
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr 1fr 1fr",
+        float: "left",
+        padding: "5px",
+        width: "30vw",
+      }}
+    >
+      <td>
+        <img
+          src={`http://localhost:5000/upload/${file_name}`}
+          style={{ width: "6vw", height: "6vw", objectFit: "cover" }}
+        />
+      </td>
+      <td>{product_title}</td>
+      <td>{product_price * product_count}</td>
+      <td>{purchase_date.slice(0, 11)}</td>
+    </div>
+  )
+}
 
 class Profile extends React.Component {
   constructor(props) {
@@ -11,6 +36,7 @@ class Profile extends React.Component {
     this.state = {
       nickName: "",
       updateFlag: false,
+      purchases: [],
     }
   }
   handleUpdate = () => {
@@ -31,12 +57,17 @@ class Profile extends React.Component {
     this.setState({ nickName: nickname, updateFlag: false })
   }
   async componentDidMount() {
-    if (!this.props.array.loginCheck) {
+    if (!window.sessionStorage.getItem("id")) {
       console.log(this.props.array)
       alert("로그인이 필요합니다!")
       this.props.history.push("/login")
     } else {
-      this.setState({ nickName: this.props.array.nickName })
+      axios.get(`/cart/purchase/${window.sessionStorage.getItem("id")}`).then((res) => {
+        this.setState({
+          nickName: this.props.array.nickName,
+          purchases: res.data,
+        })
+      })
     }
   }
   render() {
@@ -50,7 +81,7 @@ class Profile extends React.Component {
           <div className="box">
             <h1>{this.props.array.id}</h1>님 <br />
             안녕하세요! 내 정보 메뉴는 <br />
-            회원가입 시 입력하신 닉네임과 심리테스트 결과를 확인하실 수 있습니다.
+            회원가입 시 입력하신 닉네임과 구매 기록을 확인하실 수 있습니다.
           </div>
         </div>
         <div className="result">
@@ -71,6 +102,31 @@ class Profile extends React.Component {
               </button>
             </>
           )}
+        </div>
+        <div className="purchase_list">
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr",
+              backgroundColor: "gray",
+              margin: "5px",
+              height: "26px",
+              color: "white",
+              lineHeight: "23px",
+            }}
+          >
+            <div>상품 사진</div>
+            <div>이름</div>
+            <div>총 가격</div>
+            <div>구매 날짜</div>
+            <div>상품 사진</div>
+            <div>이름</div>
+            <div>총 가격</div>
+            <div>구매 날짜</div>
+          </div>
+          {this.state.purchases.length > 0
+            ? this.state.purchases.map((p) => <PurchaseRow {...p} />)
+            : "구매 기록이 없습니다."}
         </div>
         <div className="gotest">
           <Link to="/product">

@@ -24,7 +24,7 @@ function App() {
   //   setUserState({ [n]: v })
   // }
 
-  useEffect(() => {
+  useEffect(async () => {
     axios
       .post("/")
       .then(res => {
@@ -33,6 +33,7 @@ function App() {
           nickName: res.data.nickName,
           loginCheck: res.data.loginCheck,
         })
+        if (res.data.id) window.sessionStorage.setItem("id", res.data.id)
       })
       .catch(err => {
         console.log(err)

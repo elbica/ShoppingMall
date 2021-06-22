@@ -139,12 +139,12 @@ function ProductDetail({ history, match: { params } }) {
       return
     }
     let args = {
-      user_id: id,
       product_id,
+      user_id: id,
       product_count: count,
-      product_title: detail.product_title,
-      total_price: detail.product_price * count,
       file_name: detail.file_name,
+      product_title: detail.product_title,
+      product_price: detail.product_price,
     }
     axios.post(`/product/${product_id}`, args).then((res) => {
       if (res.data.purchase) {

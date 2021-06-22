@@ -1,7 +1,7 @@
 .profile_all {
     color: rgb(80, 80, 80);
     text-align: center;
-    height: 75vh; 
+    height: 78vh; 
     width: 60vw; margin:19vh auto 4vh auto;
     padding-top: 22px;
     background: white; border-radius: 30px;
@@ -39,7 +39,7 @@
     display: inline-block;
 }
 .profile_all .text {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 .profile_all .text .box h1 {
     display: inline-block;
@@ -51,7 +51,7 @@
 /*정보*/
 .profile_all .result .heads {
     font-size: 16px;
-    margin-bottom: 8px;
+    margin-bottom: 0px;
     color: rgb(61, 61, 61);
 }
 .profile_all .result .box {
@@ -73,9 +73,16 @@
 .result .modify:hover, .result .compl:hover{
     background: rgb(70, 134, 255);
 }
+.purchase_list{
+    margin-bottom: 10px;
+}
 /*메시지&버튼*/
+.gotest{
+    clear: both;;
+}
 .profile_all .gotest a .message {
-    margin-top: 20px;
+    clear:both;
+    margin-top: 40px;
     color: rgb(0, 88, 251);
     font-size: 16px;
     margin-bottom: 10px;
@@ -83,8 +90,8 @@
 .profile_all .gotest a .btn {
     font-weight: normal;
     box-shadow: 0 6px 9px rgba(50, 50, 93, 0.7);
-    height: 5vw;
-    width: 20vw;
+    height: 7vh;
+    width: 16vw;
     border-radius: 45px;
     color: white;
     transition: 0.3s all;

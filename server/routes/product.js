@@ -76,13 +76,10 @@ router.post("/", (req, res, next) => {
   })
 })
 router.post("/:product_id", (req, res) => {
-  let id = Number(req.params.product_id)
-  let { product_id, product_count, user_id, product_title, total_price, file_name } = req.body
   let params = Object.values(req.body)
-  params[`product_id`] = Number(params[`product_id`])
+
   let sql = "insert into purchase values (?,?,?,?,?,?,now())"
   conn.query(sql, params, (err, rs) => {
-    console.log(rs)
     if (err) console.log(err)
     else res.send({ purchase: true })
   })
